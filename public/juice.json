@@ -1,0 +1,167 @@
+[
+    {
+        "id": 1,
+        "name": "Orange Juice",
+        "category": "Citrus",
+        "description": "Freshly squeezed orange juice.",
+        "price": 2.99,
+        "image": "https://i.ibb.co/nDfqqJy/sam-hojati-lw8-Gflb-Jw-Lc-unsplash.jpg",
+        "rating": 4.5,
+        "reviews": 10,
+        "available": true
+    },
+    {
+        "id": 2,
+        "name": "Apple Juice",
+        "category": "Fruit",
+        "description": "100% pure apple juice.",
+        "price": 3.49,
+        "image": "https://i.ibb.co/QN3GQb0/front-view-fresh-ripe-apple-with-green-apple-juice-dark-mellow-juice-tree-photo-color.jpg",
+        "rating": 4.2,
+        "reviews": 8,
+        "available": true
+    },
+    {
+        "id": 3,
+        "name": "Pineapple Juice",
+        "category": "Tropical",
+        "description": "Refreshing pineapple juice.",
+        "price": 2.99,
+        "image": "https://i.ibb.co/6cSWdNV/pineapple-juice-dark-wooden-surface.jpg",
+        "rating": 4.8,
+        "reviews": 12,
+        "available": true
+    },
+    {
+        "id": 4,
+        "name": "Grapefruit Juice",
+        "category": "Citrus",
+        "description": "Tangy and refreshing grapefruit juice.",
+        "price": 2.99,
+        "image": "https://i.ibb.co/zxwHLSS/grapefruit-juice-with-basil-seeds.jpg",
+        "rating": 4.1,
+        "reviews": 6,
+        "available": true
+    },
+    {
+        "id": 5,
+        "name": "Watermelon Juice",
+        "category": "Fruit",
+        "description": "Sweet and hydrating watermelon juice.",
+        "price": 3.99,
+        "image": "https://i.ibb.co/wNxLcw7/high-angle-glasses-with-straws-watermelon-cocktails.jpg",
+        "rating": 4.6,
+        "reviews": 9,
+        "available": true
+    },
+    {
+        "id": 6,
+        "name": "Mango Juice",
+        "category": "Tropical",
+        "description": "Exotic and luscious mango juice.",
+        "price": 4.49,
+        "image": "https://i.ibb.co/BfjwKzj/mango-juice-glass-dark-surface.jpg",
+        "rating": 4.9,
+        "reviews": 14,
+        "available": true
+    },
+    {
+        "id": 7,
+        "name": "Strawberry Juice",
+        "category": "Berry",
+        "description": "Delicious and refreshing strawberry juice.",
+        "price": 3.99,
+        "image": "https://i.ibb.co/g9cgPLG/arvid-skywalker-h6cc-Jc-VHh20-unsplash.jpg",
+        "rating": 4.3,
+        "reviews": 7,
+        "available": true
+    },
+    {
+        "id": 8,
+        "name": "Pomegranate Juice",
+        "category": "Tropical",
+        "description": "Antioxidant-rich pomegranate juice.",
+        "price": 4.99,
+        "image": "https://i.ibb.co/R34Yzp2/pomegranate-juice-glass-with-pipe.jpg",
+        "rating": 4.7,
+        "reviews": 11,
+        "available": true
+    },
+    {
+        "id": 9,
+        "name": "Cranberry Juice",
+        "category": "Berry",
+        "description": "Tart and tangy cranberry juice.",
+        "price": 2.99,
+        "image": "https://i.ibb.co/N30xGrp/juice-jug-with-cherry-cutting-board-kitchen-towel-side-view.jpg",
+        "rating": 4.0,
+        "reviews": 5,
+        "available": true
+    },
+    {
+        "id": 10,
+        "name": "Lemonade",
+        "category": "Citrus",
+        "description": "Classic homemade lemonade.",
+        "price": 1.99,
+        "image": "https://i.ibb.co/vc1Tn27/close-up-view-natural-fresh-detox-water-served-with-tube-mint-orange-brown-background.jpg",
+        "rating": 4.4,
+        "reviews": 8,
+        "available": true
+    },
+    {
+        "id": 11,
+        "name": "Carrot Juice",
+        "category": "Fruit",
+        "description": "Freshly pressed carrot juice.",
+        "price": 3.49,
+        "image": "https://i.ibb.co/BfjwKzj/mango-juice-glass-dark-surface.jpg",
+        "rating": 3.8,
+        "reviews": 4,
+        "available": true
+    },
+    {
+        "id": 12,
+        "name": "Kiwi Juice",
+        "category": "Tropical",
+        "description": "Tropical kiwi juice with a hint of sweetness.",
+        "price": 3.99,
+        "image": "https://i.ibb.co/FJJP6Mp/Refreshing-Kiwi-Mojito-Cocktail-with-Mint-500x375.jpg",
+        "rating": 4.2,
+        "reviews": 7,
+        "available": true
+    },
+    {
+        "id": 13,
+        "name": "Blueberry Juice",
+        "category": "Berry",
+        "description": "Rich and flavorful blueberry juice.",
+        "price": 4.49,
+        "image": "https://i.ibb.co/grpG9j4/Cold-Blueberry-Cocktail-with-Mint-and-Ice.jpg" ,
+        "rating": 4.5,
+        "reviews": 10,
+        "available": true
+    },
+    {
+        "id": 14,
+        "name": "Banana Juice",
+        "category": "Tropical",
+        "description": "Exquisite and tropical Banana juice.",
+        "price": 3.99,
+        "image": "https://i.ibb.co/85kqFh6/221261-Peanut-Butter-Banana-Smoothie-DDMFS-4x3-79533eeb04c84b42aae440d643fc9a31.jpg" ,
+        "rating": 4.3,
+        "reviews": 9,
+        "available": true
+    },
+    {
+        "id": 15,
+        "name": "Avocado Juice",
+        "category": "Fruit",
+        "description": "Juicy and sweet Avocado juice.",
+        "price": 2.99,
+        "image": "https://i.ibb.co/6mddF93/Avocado-Spinach-Smoothie-1024x768.jpg",
+        "rating": 4.1,
+        "reviews": 6,
+        "available": true
+    }
+]

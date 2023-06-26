@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.swiper-button-prev
+{
+    color: rgb(214, 97, 97) !important;
+}
+.swiper-button-next
+{
+    color: rgb(214, 97, 97) !important;
+}
+.swiper-pagination-bullet-active
+{
+    background: rgb(224, 17, 17) !important;
+}
+.react-tabs__tab-list
+{
+   display: flex;
+   justify-content: center;
+   gap: 10px;
+   border-bottom: none !important;
+   margin-top: 20px !important;
+   margin-bottom: 30px !important;
+   font-size: 20px;
+  
+}
+.react-tabs__tab
+{
+   border: none !important;
+
+}
+.react-tabs__tab--selected
+{
+   color: yellowgreen !important;
+}
