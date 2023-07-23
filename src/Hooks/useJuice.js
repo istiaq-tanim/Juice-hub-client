@@ -1,17 +1,12 @@
-import { useEffect, useState } from "react";
-
-const useJuice = () =>
-{
-    const [juice,setJuice]=useState([])
-    const [loading,setLoading]=useState(true)
-    useEffect(()=>{
-        fetch("juice.json")
-        .then(res => res.json())
-        .then(data => {setJuice(data)
-          setLoading(false)
-        })
-    },[])
-
-    return [juice,loading]
+import { useQuery } from "@tanstack/react-query";
+const useJuice = () => {
+  const { data: juice = [], refetch } = useQuery({
+    queryKey: ["juiceItems"],
+    queryFn: async () => {
+      const res = await fetch("https://juice-hub-server.vercel.app/juiceItems")
+      return res.json()
+    }
+  })
+  return [juice, refetch]
 }
 export default useJuice;

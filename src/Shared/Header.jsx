@@ -1,28 +1,31 @@
 import { useContext, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { FaCartPlus } from 'react-icons/fa';
 import {
-  
+
   Bars3BottomRightIcon,
   XMarkIcon,
 } from '@heroicons/react/24/solid'
 import { UserContext } from '../Provider/AuthProvider'
+import { useCart } from '../Hooks/usecart';
+import { useAdmin } from '../Hooks/useAdmin';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const {user,logOut}=useContext(UserContext)
-
-  const handleLogout = ()=>
-  {
+  const { user, logOut } = useContext(UserContext)
+  const [cart] = useCart()
+  const [isAdmin] = useAdmin()
+  const handleLogout = () => {
     logOut()
-    .then(()=>{})
-    .catch(error => console.log(error.message))
+      .then(() => { })
+      .catch(error => console.log(error.message))
   }
   return (
     <div className='bg-zinc-800 opacity-80 fixed px-4 z-10 py-5 rounded-lg w-[100%]'>
       <div className='relative flex items-center justify-between text-white'>
         {/* Logo Section */}
         <Link to='/' className='inline-flex items-center'>
-        <img className='bg-red-600 rounded-full' src="https://i.ibb.co/pj0JM85/7uptheme-logo.png" />
+          <img className='bg-red-600 rounded-full' src="https://i.ibb.co/pj0JM85/7uptheme-logo.png" />
           <span className='ml-2 text-xl font-bold tracking-wide text-white'>
             Juice Hub
           </span>
@@ -41,7 +44,7 @@ const Header = () => {
           <li>
             <NavLink
               to='/contact'
-              className={({ isActive }) => (isActive ? "text-red-400": '')}
+              className={({ isActive }) => (isActive ? "text-red-400" : '')}
             >
               Contact
             </NavLink>
@@ -54,6 +57,36 @@ const Header = () => {
               Order
             </NavLink>
           </li>
+          <li>
+            {
+              isAdmin?.admin ? <NavLink
+                to='/dashboard/adminHome'
+                className={({ isActive }) => (isActive ? "text-red-400" : '')}
+              >
+                DashBoard
+              </NavLink> :
+                <NavLink
+                  to='/dashboard/userCart'
+                  className={({ isActive }) => (isActive ? "text-red-400" : '')}
+                >
+                  DashBoard
+                </NavLink>
+            }
+          </li>
+          <li>
+            {
+              isAdmin?.admin ||
+              <p className='flex relative'>
+
+                <NavLink to="/dashboard/userCart"> <FaCartPlus className='text-xl'></FaCartPlus>
+                  <span className='absolute -top-4 left-5'>{cart?.length || ""}</span></NavLink>
+
+              </p>
+            }
+
+          </li>
+
+
           {user ?
             <>
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar tooltip-success tooltip" data-tip={user.displayName}>
@@ -74,7 +107,7 @@ const Header = () => {
             </li>
           }
 
-          
+
         </ul>
         {/* Mobile Navbar Section */}
         <div className='lg:hidden'>
@@ -93,7 +126,6 @@ const Header = () => {
                 <div className='flex items-center justify-between mb-4'>
                   <div>
                     <Link to='/' className='inline-flex items-center'>
-                     
                       <span className='ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase'>
                         nextPage
                       </span>

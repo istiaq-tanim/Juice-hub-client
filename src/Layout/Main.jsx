@@ -5,7 +5,7 @@ import Footer from './../Shared/Footer';
 const Main = () => {
     const location=useLocation();
     const withoutFooter=location.pathname.includes("login") || location.pathname.includes("register");
-    console.log(withoutFooter)
+   
 
     return (
         <div>

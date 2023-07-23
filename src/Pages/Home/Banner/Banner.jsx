@@ -11,9 +11,10 @@ const Banner = () => {
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
-        pagination={{
-          clickable: true,
-        }}
+        // pagination={{
+        //   clickable: true,
+        // }}
+        loop={true}
         navigation={true}
         modules={[Pagination, Navigation]}
         className="mySwiper"
