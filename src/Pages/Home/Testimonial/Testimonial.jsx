@@ -7,8 +7,10 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 
 import { EffectCoverflow, Pagination } from 'swiper';
-import { useEffect, useState } from 'react';
+import { useEffect} from 'react';
 import { Rating, ThinStar } from '@smastrom/react-rating'
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchTestimonials } from '../../../features/Testimonilas/testimonialSlice';
 
 const myStyles = {
     itemShapes: ThinStar,
@@ -16,12 +18,13 @@ const myStyles = {
     inactiveFillColor: '#fbf1a9'
 }
 const Testimonial = () => {
-    const [testimonials, setTestimonials] = useState([])
-    useEffect(() => {
-        fetch("https://juice-hub-server.vercel.app/review")
-            .then(res => res.json())
-            .then(data => setTestimonials(data))
-    }, [])
+    const {testimonials}=useSelector(state=>state.testimonials)
+    console.log(testimonials)
+    const dispatch=useDispatch()
+    useEffect(()=>{
+        dispatch(fetchTestimonials())
+    },[dispatch])
+
     return (
         <div>
             <h3 className='text-center font-bold text-3xl text-green-300'>Our Happy Customer</h3>
@@ -48,17 +51,17 @@ const Testimonial = () => {
                                 <div className="flex flex-col items-center mx-24 my-16">
                                     <Rating
                                         style={{ maxWidth: 180 }}
-                                        value={testimonial.rating}
+                                        value={testimonial?.rating}
                                         itemStyles={myStyles}
                                         readOnly
                                     />
                                     <div className="avatar">
                                         <div className="w-24 mt-5 rounded-full">
-                                            <img src={testimonial.image} />
+                                            <img src={testimonial?.image} />
                                         </div>
                                     </div>
-                                    <p className="py-8 text-center">{testimonial.review}</p>
-                                    <h3 className="text-2xl text-orange-400 uppercase">{testimonial.name}</h3>
+                                    <p className="py-8 text-center">{testimonial?.review}</p>
+                                    <h3 className="text-2xl text-orange-400 uppercase">{testimonial?.name}</h3>
                                 </div>
                             </SwiperSlide>
                         )
