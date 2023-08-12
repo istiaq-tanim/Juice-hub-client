@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { Rating, StickerStar } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import { useContext, useState } from "react";
-import Swal from "sweetalert2";
+import Swal from "sweetalert2"
 import { UserContext } from "../../../Provider/AuthProvider";
 const myStyles = {
     itemShapes: StickerStar,

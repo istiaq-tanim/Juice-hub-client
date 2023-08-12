@@ -1,4 +1,5 @@
-const Hero = () => {
+const Hero = () => 
+{
     return (
         <div className="my-20 relative">
             <img className="lg:h-[600px] bg-cover w-full backdrop-blur-md" src="https://i.ibb.co/LtYqxkv/jugoslocos-GHsf8ny3-LF0-unsplash-1.jpg" />
@@ -11,4 +12,4 @@ const Hero = () => {
     );
 };
 
-export default Hero;
+export default Hero

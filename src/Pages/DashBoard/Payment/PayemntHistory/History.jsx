@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../../Provider/AuthProvider";
-import HistoryRow from "./HistoryRow";
+import HistoryRow from "./HistoryRow"
 
 const History = () => {
     const {user}=useContext(UserContext)

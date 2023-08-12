@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
-import { FreeMode, Pagination , EffectCoverflow } from 'swiper';
+import { FreeMode, Pagination , EffectCoverflow } from 'swiper'
 
 
 const BestSeller = () => {

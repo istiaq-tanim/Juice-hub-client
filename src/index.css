@@ -6,7 +6,8 @@
   color: white;
 }
 
-.drawer-side a {
+.drawer-side a 
+{
   background-color: transparent;
 }
 .swiper-button-prev {

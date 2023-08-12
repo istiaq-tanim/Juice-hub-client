@@ -4,7 +4,7 @@ import UserCartRow from "./UserCartRow";
 
 
 const UserCart = () => {
-    const [cart] = useCart();
+    const [cart] = useCart()
     let price = cart.reduce((sum, item) => { return sum + item.price }, 0)
     price=parseFloat(price.toFixed(2))
 

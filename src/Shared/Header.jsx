@@ -4,7 +4,7 @@ import { FaCartPlus } from 'react-icons/fa';
 import {
 
   Bars3BottomRightIcon,
-  XMarkIcon,
+  XMarkIcon
 } from '@heroicons/react/24/solid'
 import { UserContext } from '../Provider/AuthProvider'
 import { useCart } from '../Hooks/usecart';

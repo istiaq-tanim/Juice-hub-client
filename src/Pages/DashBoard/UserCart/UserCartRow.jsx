@@ -15,6 +15,7 @@ const UserCartRow = ({ item, index }) => {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
+            
         }).then((result) => {
             if (result.isConfirmed) {
                 fetch(`https://juice-hub-server.vercel.app/carts/${id}`, {

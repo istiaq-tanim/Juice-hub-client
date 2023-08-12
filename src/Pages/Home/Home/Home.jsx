@@ -6,6 +6,7 @@ import Testimonial from "../Testimonial/Testimonial";
 const Home = () => {
     return (
         <div>
+            
             <Banner></Banner>
             <BestSeller></BestSeller>
             <Hero></Hero>

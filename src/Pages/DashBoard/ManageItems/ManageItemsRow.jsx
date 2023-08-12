@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaPen, FaTrash } from "react-icons/fa";
-import Modal from 'react-modal';
+import Modal from 'react-modal'
 import "./Modal.css"
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";

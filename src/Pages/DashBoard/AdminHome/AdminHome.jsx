@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { FaCarSide, FaUsers, FaUtensils, FaWallet } from 'react-icons/fa';
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, PieChart, Pie,  ResponsiveContainer, Legend } from 'recharts';
-import { UserContext } from "../../../Provider/AuthProvider";
+import { UserContext } from "../../../Provider/AuthProvider"
 
 
 const AdminHome = () => {

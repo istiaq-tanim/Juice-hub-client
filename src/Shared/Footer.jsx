@@ -1,6 +1,7 @@
 
 
-const Footer = () => {
+const Footer = () => 
+{
     return (
         <div>
             <footer className="footer p-10 bg-slate-800 text-neutral-content mt-20">

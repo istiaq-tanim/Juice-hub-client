@@ -5,6 +5,7 @@ import { FaCartPlus, FaStar, FaUserClock, FaWallet } from "react-icons/fa";
 
 const UserHome = () => {
     const { user } = useContext(UserContext)
+    
     const fetchData = useFetch(`https://juice-hub-server.vercel.app/userHome/?email=${user.email}`)
     const { reviewCount, cartsCount , paymentCounts ,shop} = fetchData
     return (

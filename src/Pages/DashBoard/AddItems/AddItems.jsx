@@ -12,6 +12,7 @@ const AddItems = () => {
             body: formData
         }).then(res => res.json())
             .then(imgRes => {
+                
                 if (imgRes.success) {
                     const savedImg = imgRes.data.display_url
                     const { name, price, category, description, available, ratings } = data

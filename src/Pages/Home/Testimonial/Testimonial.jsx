@@ -7,10 +7,10 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 
 import { EffectCoverflow, Pagination } from 'swiper';
-import { useEffect} from 'react';
+import { useEffect, useState} from 'react';
 import { Rating, ThinStar } from '@smastrom/react-rating'
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchTestimonials } from '../../../features/Testimonilas/testimonialSlice';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { fetchTestimonials } from '../../../features/Testimonilas/testimonialSlice';
 
 const myStyles = {
     itemShapes: ThinStar,
@@ -18,12 +18,21 @@ const myStyles = {
     inactiveFillColor: '#fbf1a9'
 }
 const Testimonial = () => {
-    const {testimonials}=useSelector(state=>state.testimonials)
-    console.log(testimonials)
-    const dispatch=useDispatch()
-    useEffect(()=>{
-        dispatch(fetchTestimonials())
-    },[dispatch])
+    // const {testimonials}=useSelector(state=>state.testimonials)
+    // console.log(testimonials)
+    // const dispatch=useDispatch()
+    // useEffect(()=>{
+    //     dispatch(fetchTestimonials())
+    // },[dispatch])
+
+    const [testimonials, setTestimonials] = useState([])
+    useEffect(() => {
+        fetch("https://juice-hub-server.vercel.app/review")
+            .then(res => res.json())
+            .then(data => {setTestimonials(data)
+            console.log(data)
+            })
+    }, [])
 
     return (
         <div>

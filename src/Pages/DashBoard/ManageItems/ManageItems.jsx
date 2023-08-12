@@ -2,6 +2,7 @@ import useJuice from "../../../Hooks/useJuice";
 import ManageItemsRow from "./ManageItemsRow";
 
 const ManageItems = () => {
+    
     const [juice, refetch] = useJuice()
     return (
         <div className="w-full">

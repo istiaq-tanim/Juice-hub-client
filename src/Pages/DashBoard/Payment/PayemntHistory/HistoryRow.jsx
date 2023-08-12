@@ -1,6 +1,7 @@
 
 
-const HistoryRow = ({index,item}) => {
+const HistoryRow = ({index,item}) => 
+{
     const {email,price,quantity,date}=item
     const formatDate = () =>{
        const dateObj=new Date(date)

@@ -4,7 +4,7 @@ import emailjs from '@emailjs/browser';
 import Swal from 'sweetalert2';
 
 const Contact = () => {
-    const form = useRef();
+    const form = useRef()
 
     const sendEmail = (e) => {
         e.preventDefault();
