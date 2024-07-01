@@ -1,27 +1,24 @@
 
 import { useContext } from "react";
-import SwipeHome from "../../../Swiper/SwipeHome";
 import { SwipeContext } from "../../../Provider/SwipeProvider";
+import SwipeHome from "../../../Swiper/SwipeHome";
 
 
 const Banner = () => {
   const { place } = useContext(SwipeContext);
-    return (
-      <div
+  return (
+    <div
       className="relative bg-cover object-contain bg-no-repeat w-full h-screen pt-32"
       style={{
-        backgroundImage: `url("${
-          place?.backgroundImage || "/public/images/Rectangle 1.png"
-        }")`,
-        height: "100vh", 
-        // Set the height of the div to full screen height
+        backgroundImage: `url("${place?.backgroundImage || "/public/images/Rectangle 1.png"
+          }")`,
+        height: "100vh",
       }}
     >
       <div className="absolute inset-0 bg-black/50">
 
-        {/* Front items and swinger */}
         <div className="grid grid-cols-1 gap-5 md:grid-cols-10 my-20">
-          <div className="ml-12 text-white col-span-4 space-y-4 mt-5  order-2 md:order-1">
+          <div className="ml-12 hidden lg:block text-white col-span-4 space-y-4 mt-5  order-2 md:order-1">
             <h3 className="text-6xl font-bold">{place?.name}</h3>
             <p className="text-justify">{place?.info}</p>
           </div>
@@ -31,7 +28,7 @@ const Banner = () => {
         </div>
       </div>
     </div>
-    );
+  );
 };
 
 export default Banner;

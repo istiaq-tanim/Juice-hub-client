@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectCoverflow, FreeMode, Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
-import { FreeMode, Pagination , EffectCoverflow } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 
 const BestSeller = () => {
@@ -20,7 +20,7 @@ const BestSeller = () => {
     }, [])
     return (
         <div>
-            <h3 className='text-center font-bold text-3xl text-green-300 mt-20'>Our Best Selling Product</h3>
+            <h3 className='text-center text-3xl text-[#ABCA37] mt-20'>Our Best Selling Product</h3>
             <>
                 <Swiper
                     slidesPerView={3}
@@ -37,7 +37,7 @@ const BestSeller = () => {
                         modifier: 1,
                         slideShadows: true,
                     }}
-                    modules={[FreeMode,Pagination , EffectCoverflow]}
+                    modules={[FreeMode, Pagination, EffectCoverflow]}
                     className="mySwiper"
                 >
                     {

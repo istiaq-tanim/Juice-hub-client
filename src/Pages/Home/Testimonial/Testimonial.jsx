@@ -1,14 +1,14 @@
+import '@smastrom/react-rating/style.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import '@smastrom/react-rating/style.css'
 
 
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 
+import { Rating, ThinStar } from '@smastrom/react-rating';
+import { useEffect, useState } from 'react';
 import { EffectCoverflow, Pagination } from 'swiper';
-import { useEffect, useState} from 'react';
-import { Rating, ThinStar } from '@smastrom/react-rating'
 // import { useDispatch, useSelector } from 'react-redux';
 // import { fetchTestimonials } from '../../../features/Testimonilas/testimonialSlice';
 
@@ -29,14 +29,15 @@ const Testimonial = () => {
     useEffect(() => {
         fetch("https://juice-hub-server.vercel.app/review")
             .then(res => res.json())
-            .then(data => {setTestimonials(data)
-            console.log(data)
+            .then(data => {
+                setTestimonials(data)
+                console.log(data)
             })
     }, [])
 
     return (
         <div>
-            <h3 className='text-center font-bold text-3xl text-green-300'>Our Happy Customer</h3>
+            <h3 className='text-center text-3xl text-[#ABCA37]'>Our Happy Customer</h3>
             <>
                 <Swiper
                     effect={'coverflow'}
