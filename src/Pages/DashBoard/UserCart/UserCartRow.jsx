@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 import { useCart } from '../../../Hooks/usecart';
 
 const UserCartRow = ({ item, index }) => {
-    const [ ,refetch ] = useCart()
+    const [, refetch] = useCart()
     const { name, price, image, _id } = item
 
     const handleDelete = (id) => {
@@ -15,10 +15,10 @@ const UserCartRow = ({ item, index }) => {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
-            
+
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://juice-hub-server.vercel.app/carts/${id}`, {
+                fetch(`http://localhost:5000/carts/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

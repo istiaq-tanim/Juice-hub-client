@@ -1,7 +1,7 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { UserContext } from "../../../Provider/AuthProvider";
 const Checkout = ({ price, cart }) => {
     const stripe = useStripe()
     const elements = useElements()
@@ -14,7 +14,7 @@ const Checkout = ({ price, cart }) => {
     useEffect(() => {
 
         if (price > 0) {
-            fetch("https://juice-hub-server.vercel.app/create-payment-intent", {
+            fetch("http://localhost:5000/create-payment-intent", {
                 method: "POST",
                 headers: { "content-type": "application/json" },
                 body: JSON.stringify({ price })
@@ -82,7 +82,7 @@ const Checkout = ({ price, cart }) => {
                 cartItems: cart.map(item => item._id),
             }
 
-            fetch("https://juice-hub-server.vercel.app/payment",
+            fetch("http://localhost:5000/payment",
                 {
                     method: "POST",
                     headers: { "content-type": "application/json" },

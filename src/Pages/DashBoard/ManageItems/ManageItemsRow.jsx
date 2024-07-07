@@ -1,49 +1,46 @@
 import { useState } from "react";
-import { FaPen, FaTrash } from "react-icons/fa";
-import Modal from 'react-modal'
-import "./Modal.css"
-import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
+import { FaPen, FaTrash } from "react-icons/fa";
+import Modal from 'react-modal';
+import Swal from "sweetalert2";
+import "./Modal.css";
 Modal.setAppElement('#root');
 
 const ManageItemsRow = ({ index, item, refetch }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const { register, handleSubmit } = useForm();
-    const onSubmit = data =>
-   {
-      const {name, price, image, id , ratings , description, available ,category}=data
-      console.log(id)
-      const editItem={
+    const onSubmit = data => {
+        const { name, price, image, id, ratings, description, available, category } = data
+        const editItem = {
 
-        name,
-        price:parseFloat(price),
-        id,
-        image,
-        ratings:parseFloat(ratings),
-        description,
-        available:parseInt(available),
-        category
-      }
-      fetch("https://juice-hub-server.vercel.app/juiceItems",{
-        method:"PUT",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(editItem)
-      })
-      .then(res => res.json())
-      .then(data => {
-        if(data.modifiedCount === 1)
-        {
-            refetch()
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Item Edited Successfully',
-                showConfirmButton: false,
-                timer: 1000
-            })
+            name,
+            price: parseFloat(price),
+            id,
+            image,
+            ratings: parseFloat(ratings),
+            description,
+            available: parseInt(available),
+            category
         }
-      })
-   }
+        fetch("http://localhost:5000/juiceItems", {
+            method: "PUT",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(editItem)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount === 1) {
+                    refetch()
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Item Edited Successfully',
+                        showConfirmButton: false,
+                        timer: 1000
+                    })
+                }
+            })
+    }
 
     const showModal = () => {
         setIsModalOpen(true);
@@ -64,7 +61,7 @@ const ManageItemsRow = ({ index, item, refetch }) => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://juice-hub-server.vercel.app/juiceItems/${id}`, {
+                fetch(`http://localhost:5000/juiceItems/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
@@ -84,7 +81,7 @@ const ManageItemsRow = ({ index, item, refetch }) => {
 
 
     }
-    const { name, price, image, _id , ratings , description, available,category} = item
+    const { name, price, image, _id, ratings, description, available, category } = item
     return (
         <tr>
             <th>{index + 1}</th>
@@ -124,13 +121,13 @@ const ManageItemsRow = ({ index, item, refetch }) => {
                                     </select>
                                 </div>
                                 <div className="form-control w-full px-5">
-                                    <label className="label"> 
+                                    <label className="label">
                                         <span className="label-text font-medium text-lg">Price</span>
                                     </label>
                                     <input type="text" defaultValue={price} placeholder="Type here" {...register("price", { required: true })} className="input input-bordered w-full" />
                                 </div>
                                 <div className="form-control hidden w-full px-5">
-                                    <label className="label"> 
+                                    <label className="label">
                                         <span className="label-text font-medium text-lg">Id</span>
                                     </label>
                                     <input type="text" defaultValue={_id} placeholder="Type here" {...register("id", { required: true })} className="input input-bordered w-full" />

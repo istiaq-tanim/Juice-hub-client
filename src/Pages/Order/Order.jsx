@@ -1,16 +1,14 @@
 import { useState } from 'react';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import useJuice from '../../Hooks/useJuice';
 import OrderCard from './OrderCard';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-// import 'swiper/swiper-bundle.css';
-// import 'swiper/components/pagination/pagination.min.css';
+
 import SwiperCore, { Pagination } from 'swiper';
 import Cover from '../../Shared/Cover';
 
-// Install Swiper modules
 SwiperCore.use([Pagination]);
 
 const Order = () => {
@@ -24,8 +22,8 @@ const Order = () => {
 
     return (
         <div>
-           <Cover title="Our Juice Hub" img="https://i.ibb.co/W2wVjmp/grapefruit-drink-with-picnic-cloth.jpg"></Cover>
-            
+            <Cover title="Our Juice Hub" img="https://i.ibb.co/W2wVjmp/grapefruit-drink-with-picnic-cloth.jpg"></Cover>
+
             <div className="w-[90%] mx-auto">
                 <h3 className='mt-20 text-3xl text-center'>Our Products</h3>
                 <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>

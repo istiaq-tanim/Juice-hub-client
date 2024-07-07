@@ -1,13 +1,13 @@
 import { useContext } from "react";
+import { FaCartPlus, FaStar, FaUserClock, FaWallet } from "react-icons/fa";
 import useFetch from "../../../Hooks/useFetch";
 import { UserContext } from "../../../Provider/AuthProvider";
-import { FaCartPlus, FaStar, FaUserClock, FaWallet } from "react-icons/fa";
 
 const UserHome = () => {
     const { user } = useContext(UserContext)
-    
-    const fetchData = useFetch(`https://juice-hub-server.vercel.app/userHome/?email=${user.email}`)
-    const { reviewCount, cartsCount , paymentCounts ,shop} = fetchData
+
+    const fetchData = useFetch(`http://localhost:5000/userHome/?email=${user.email}`)
+    const { reviewCount, cartsCount, paymentCounts, shop } = fetchData
     return (
         <div className="w-full px-10">
             <h3 className="text-3xl text-center my-20 font-sans uppercase text-red-400">Hello {user.displayName}</h3>

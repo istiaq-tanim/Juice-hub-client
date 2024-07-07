@@ -6,8 +6,7 @@
   color: white;
 }
 
-.drawer-side a 
-{
+.drawer-side a {
   background-color: transparent;
 }
 .swiper-button-prev {
@@ -19,15 +18,19 @@
 .swiper-pagination-bullet-active {
   background: rgb(224, 17, 17) !important;
 }
+
 .react-tabs__tab-list {
   display: flex;
   justify-content: center;
   gap: 10px;
+  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))
+    drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
   border-bottom: none !important;
   margin-top: 20px !important;
   margin-bottom: 30px !important;
-  font-size: 20px;
+  font-size: 16px;
 }
+
 .react-tabs__tab {
   border: none !important;
 }
@@ -38,6 +41,3 @@
   position: static !important;
   margin-top: 10px;
 }
-
-
-

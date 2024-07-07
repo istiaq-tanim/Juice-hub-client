@@ -1,19 +1,20 @@
-import { useContext, useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
-import { FaCartPlus } from 'react-icons/fa';
 import {
-
   Bars3BottomRightIcon,
   XMarkIcon
-} from '@heroicons/react/24/solid'
-import { UserContext } from '../Provider/AuthProvider'
-import { useCart } from '../Hooks/usecart';
+} from '@heroicons/react/24/solid';
+import { useContext, useState } from 'react';
+import { FaCartPlus } from 'react-icons/fa';
+import { Link, NavLink } from 'react-router-dom';
 import { useAdmin } from '../Hooks/useAdmin';
+import { UserContext } from '../Provider/AuthProvider';
+import { useGetCartQuery } from '../features/cart/cartApi';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { user, logOut } = useContext(UserContext)
-  const [cart] = useCart()
+  const { data: cartItems } = useGetCartQuery(user?.email)
+
+
   const [isAdmin] = useAdmin()
   const handleLogout = () => {
     logOut()
@@ -66,7 +67,7 @@ const Header = () => {
                 DashBoard
               </NavLink> :
                 <NavLink
-                  to='/dashboard/userCart'
+                  to='/dashboard/userHome'
                   className={({ isActive }) => (isActive ? "text-red-400" : '')}
                 >
                   DashBoard
@@ -78,15 +79,13 @@ const Header = () => {
               isAdmin?.admin ||
               <p className='flex relative'>
 
-                <NavLink to="/dashboard/userCart"> <FaCartPlus className='text-xl'></FaCartPlus>
-                  <span className='absolute -top-4 left-5'>{cart?.length || ""}</span></NavLink>
+                <NavLink to="/userCart"> <FaCartPlus className='text-xl'></FaCartPlus>
+                  <span className='absolute -top-4 left-5'>{cartItems?.length || ""}</span></NavLink>
 
               </p>
             }
 
           </li>
-
-
           {user ?
             <>
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar tooltip-success tooltip" data-tip={user.displayName}>

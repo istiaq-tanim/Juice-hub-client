@@ -1,15 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../../Provider/AuthProvider";
-import HistoryRow from "./HistoryRow"
+import HistoryRow from "./HistoryRow";
 
 const History = () => {
-    const {user}=useContext(UserContext)
-    const [history,setHistory]=useState([])
-    useEffect(()=>{
-        fetch(`https://juice-hub-server.vercel.app/payment/?email=${user?.email}`)
-        .then(res => res.json())
-        .then(data => setHistory(data))
-    },[user.email])
+    const { user } = useContext(UserContext)
+    const [history, setHistory] = useState([])
+    useEffect(() => {
+        fetch(`http://localhost:5000/payment/?email=${user?.email}`)
+            .then(res => res.json())
+            .then(data => setHistory(data))
+    }, [user.email])
     return (
         <div className="w-4/5 mx-auto">
             <p className="uppercase font-3xl text-center font-bold italic">{user.displayName} ALL Payment</p>
@@ -23,7 +23,7 @@ const History = () => {
                             <th>Quantity</th>
                             <th>Price</th>
                             <th>Date</th>
-                         
+
                         </tr>
                     </thead>
                     <tbody className="text-center">

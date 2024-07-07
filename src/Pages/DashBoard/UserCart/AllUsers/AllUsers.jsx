@@ -3,14 +3,14 @@ import AllUserRow from "./AllUserRow";
 
 
 const AllUsers = () => {
-    const {data : users = [],refetch}=useQuery({
-        queryKey:["users"],
-        queryFn: async () =>{
-            const response=await fetch("https://juice-hub-server.vercel.app/users")
+    const { data: users = [], refetch } = useQuery({
+        queryKey: ["users"],
+        queryFn: async () => {
+            const response = await fetch("http://localhost:5000/users")
             return response.json()
         }
     })
-   
+
     return (
         <div className="w-full">
             <h3 className="text-center font-bold text-2xl">Total Users {users.length}</h3>
@@ -27,11 +27,11 @@ const AllUsers = () => {
                         </tr>
                     </thead>
                     <tbody className="text-center">
-                        
-                       {
-                         users.map((user,index)=> <AllUserRow key={user._id} refetch={refetch} user={user} index={index}></AllUserRow>)
-                       }
-                        
+
+                        {
+                            users.map((user, index) => <AllUserRow key={user._id} refetch={refetch} user={user} index={index}></AllUserRow>)
+                        }
+
                     </tbody>
                 </table>
             </div>

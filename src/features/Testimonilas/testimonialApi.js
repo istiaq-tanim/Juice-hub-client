@@ -1,7 +1,6 @@
 import axios from "axios"
 
-export const getTestimonials=async()=>
-{
-   const response=await axios.get("https://juice-hub-server.vercel.app/review")
+export const getTestimonials = async () => {
+   const response = await axios.get("http://localhost:5000/review")
    return response.data
 }

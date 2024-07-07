@@ -1,8 +1,8 @@
-import { useForm } from "react-hook-form";
-import { Rating, StickerStar } from '@smastrom/react-rating'
-import '@smastrom/react-rating/style.css'
+import { Rating, StickerStar } from '@smastrom/react-rating';
+import '@smastrom/react-rating/style.css';
 import { useContext, useState } from "react";
-import Swal from "sweetalert2"
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 import { UserContext } from "../../../Provider/AuthProvider";
 const myStyles = {
     itemShapes: StickerStar,
@@ -11,21 +11,21 @@ const myStyles = {
 }
 
 const Review = () => {
-    const { register, handleSubmit , reset } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const [rating, setRating] = useState(0);
-    const {user}=useContext(UserContext)
+    const { user } = useContext(UserContext)
     const onSubmit = data => {
-        const {favorite,review,suggestion}=data
-        const reviewData={
-           favorite,
-           review,
-           suggestion,
-           rating,
-           image:user.photoURL,
-           name:user.displayName,
-           email:user.email
+        const { favorite, review, suggestion } = data
+        const reviewData = {
+            favorite,
+            review,
+            suggestion,
+            rating,
+            image: user.photoURL,
+            name: user.displayName,
+            email: user.email
         }
-        fetch("https://juice-hub-server.vercel.app/review", {
+        fetch("http://localhost:5000/review", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(reviewData)

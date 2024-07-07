@@ -1,21 +1,21 @@
 import { useContext, useEffect, useState } from "react";
 import { FaCarSide, FaUsers, FaUtensils, FaWallet } from 'react-icons/fa';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, PieChart, Pie,  ResponsiveContainer, Legend } from 'recharts';
-import { UserContext } from "../../../Provider/AuthProvider"
+import { Bar, BarChart, CartesianGrid, Cell, Legend, Pie, PieChart, ResponsiveContainer, XAxis, YAxis } from 'recharts';
+import { UserContext } from "../../../Provider/AuthProvider";
 
 
 const AdminHome = () => {
     const [stat, setStat] = useState([])
     const [chartData, setChartData] = useState([])
-    const {user}=useContext(UserContext)
+    const { user } = useContext(UserContext)
     useEffect(() => {
-        fetch("https://juice-hub-server.vercel.app/adminHome")
+        fetch("http://localhost:5000/adminHome")
             .then(res => res.json())
             .then(data => setStat(data))
     }, [])
 
     useEffect(() => {
-        fetch("https://juice-hub-server.vercel.app/orderStats")
+        fetch("http://localhost:5000/orderStats")
             .then(res => res.json())
             .then(data => setChartData(data))
     }, [])
@@ -35,7 +35,7 @@ const AdminHome = () => {
     };
 
     const RADIAN = Math.PI / 180;
-    const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent}) => {
+    const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
         const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
         const x = cx + radius * Math.cos(-midAngle * RADIAN);
         const y = cy + radius * Math.sin(-midAngle * RADIAN);
@@ -86,7 +86,7 @@ const AdminHome = () => {
 
             <div className="flex my-10 gap-5">
                 <div className="w-1/2">
-                 
+
                     <BarChart
                         width={500}
                         height={300}
@@ -110,10 +110,10 @@ const AdminHome = () => {
                 </div>
 
                 <div className="w-1/2">
-                
+
                     <ResponsiveContainer width="100%" height="100%">
                         <PieChart width={400} height={400}>
-                        <Legend></Legend>
+                            <Legend></Legend>
                             <Pie
                                 data={chartData}
                                 cx="50%"

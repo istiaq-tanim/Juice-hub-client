@@ -1,61 +1,13 @@
-import { Rating } from '@smastrom/react-rating'
-import '@smastrom/react-rating/style.css'
-import { useContext } from 'react';
-import Swal from 'sweetalert2';
-import { UserContext } from '../../Provider/AuthProvider';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useCart } from '../../Hooks/usecart';
-import { useAdmin } from '../../Hooks/useAdmin';
+import { Rating } from '@smastrom/react-rating';
+import '@smastrom/react-rating/style.css';
+import { Link } from 'react-router-dom';
+
 
 const OrderCard = ({ item }) => {
-    const { name, description, price, image, ratings, _id ,available } = item
-    const [,refetch]=useCart()
-    const [isAdmin]=useAdmin()
-    const { user } = useContext(UserContext)
-    const navigate=useNavigate()
-    const location=useLocation()
-    
-    const addCart = (item) => {
-        const orderItem={name, description, price, image ,menuId : _id ,email : user?.email}
-        console.log(item)
-        if (user) {
-            fetch("https://juice-hub-server.vercel.app/carts", {
-                method: "POST",
-                headers: { "content-type": "application/json" },
-                body: JSON.stringify(orderItem)
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.insertedId) {
-                        refetch()
-                        Swal.fire({
-                            position: 'center',
-                            icon: 'success',
-                            title: 'Item Added Succesfully',
-                            showConfirmButton: false,
-                            timer: 1000
-                        })
-                    }
-                })
-        }
-        else {
-            Swal.fire({
-                title: 'Please Login First',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Go to Login Page'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    navigate("/login",{state: { from: location }})
-                }
-            })
-        }
-    }
+    const { name, description, price, image, ratings, _id, available } = item
     return (
         <div className="card card-compact bg-green-200 shadow-lg" style={{ height: "500px" }}>
-            <figure><img src={image} className="h-60 w-full object-fill" alt="Shoes" /></figure>
+            <figure><img src={image} className="h-60 w-full object-fill" alt="Fruits" /></figure>
             <div className="card-body">
                 <h2 className="card-title text-red-700">{name}</h2>
                 <p>Description: {description}</p>
@@ -66,9 +18,9 @@ const OrderCard = ({ item }) => {
                     value={ratings}
                     readOnly
                 /></div>
-                <div className="card-actions justify-center">
-                    <button disabled={isAdmin?.admin || !available } onClick={() => { addCart(item) }} className="btn btn-outline btn-error mt-5">Add To Cart</button>
-                </div>
+                <Link to={`/details/${_id}`} className="card-actions justify-center">
+                    <button className="btn btn-outline btn-error mt-5">View Details</button>
+                </Link>
                 {
                     !available && <div className="badge font-medium absolute top-5 p-3 right-5 badge-error">Out of Stock</div>
                 }

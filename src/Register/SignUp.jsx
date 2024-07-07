@@ -1,49 +1,49 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import { UserContext } from "../Provider/AuthProvider";
 import SocialLogin from "./SocialLogin";
-import Swal from "sweetalert2";
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const { createUser, updateUserProfile } = useContext(UserContext)
     const navigate = useNavigate()
-    const onSubmit = data => {console.log(data) 
-        createUser(data.email,data.password)
-        .then(result => {
-            const user=result.user;
-            console.log(user)
-            updateUserProfile(data.name,data.photo)
-            .then(()=>{
-                const savedUser={email:data.email,name:data.name,photo:data.photo,role:"user"}
-                fetch("https://juice-hub-server.vercel.app/users",{
-                    method:"POST",
-                    headers:{"content-type":"application/json"},
-                    body:JSON.stringify(savedUser)
+    const onSubmit = data => {
+        console.log(data)
+        createUser(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                updateUserProfile(data.name, data.photo)
+                    .then(() => {
+                        const savedUser = { email: data.email, name: data.name, photo: data.photo, role: "user" }
+                        fetch("http://localhost:5000/users", {
+                            method: "POST",
+                            headers: { "content-type": "application/json" },
+                            body: JSON.stringify(savedUser)
 
-                })
-                .then(res => res.json())
-                .then(data =>{
-                    if(data.insertedId)
-                    {
-                        reset()
-                        Swal.fire({
-                            position: 'center',
-                            icon: 'success',
-                            title: 'User created Successfully',
-                            showConfirmButton: false,
-                            timer: 1000
                         })
-                        navigate("/")
-                    }
-                })
-               
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    reset()
+                                    Swal.fire({
+                                        position: 'center',
+                                        icon: 'success',
+                                        title: 'User created Successfully',
+                                        showConfirmButton: false,
+                                        timer: 1000
+                                    })
+                                    navigate("/")
+                                }
+                            })
+
+                    })
+                    .catch(error => console.log(error.message))
             })
             .catch(error => console.log(error.message))
-        })
-        .catch(error => console.log(error.message))
-    
+
     };
     return (
         <div>
