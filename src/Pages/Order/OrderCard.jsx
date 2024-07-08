@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const OrderCard = ({ item }) => {
     const { name, description, price, image, ratings, _id, available } = item
     return (
-        <div className="card card-compact bg-white shadow-2xl mt-3 mb-10" style={{ height: "500px" }}>
+        <div className="card card-compact bg-white shadow-2xl mt-4 mb-10" style={{ height: "500px" }}>
             <figure><img src={image} className="h-64 w-full object-fill" alt="Fruits" /></figure>
             <div className="card-body">
                 <h2 className="card-title text-red-700">{name}</h2>
