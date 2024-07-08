@@ -38,8 +38,8 @@ export const cartApi = createApi({
                         method: "PATCH"
                   }),
                   invalidatesTags: ["Carts"]
-            })
+            }),
       }),
 });
 
-export const { useAddCartMutation, useGetCartQuery, useIncrementCartMutation, useDecrementCartMutation, useRemoveCartMutation } = cartApi;
+export const { useAddCartMutation, useGetCartQuery, useIncrementCartMutation, useDecrementCartMutation, useRemoveCartMutation, usePaymentMutation } = cartApi;

@@ -12,7 +12,7 @@ const History = () => {
     }, [user.email])
     return (
         <div className="w-4/5 mx-auto">
-            <p className="uppercase font-3xl text-center font-bold italic">{user.displayName} ALL Payment</p>
+            <p className="uppercase font-3xl text-center font-bold italic pt-5">{user.displayName} ALL Payment</p>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}

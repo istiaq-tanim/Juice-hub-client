@@ -2,6 +2,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { UserContext } from "../../../Provider/AuthProvider";
+import { useRemoveCartMutation } from "../../../features/cart/cartApi";
 const Checkout = ({ price, cart }) => {
     const stripe = useStripe()
     const elements = useElements()
@@ -10,6 +11,8 @@ const Checkout = ({ price, cart }) => {
     const [clientSecret, setClientSecret] = useState("");
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
+    const [removeCart] = useRemoveCartMutation()
+    console.log(cart)
 
     useEffect(() => {
 
@@ -23,9 +26,10 @@ const Checkout = ({ price, cart }) => {
                 .then((res) => res.json())
                 .then((data) => setClientSecret(data.clientSecret));
         }
-
-
     }, [price])
+
+
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -98,7 +102,15 @@ const Checkout = ({ price, cart }) => {
                             showConfirmButton: false,
                             timer: 1000
                         })
+                        cart.forEach(item => {
+                            removeCart(item._id)
+                                .unwrap()
+                                .then(() => console.log(`Cart item ${item._id} deleted`))
+                                .catch(err => console.error(`Failed to delete cart item ${item._id}`, err));
+                        });
+
                     }
+
                 })
         }
     }

@@ -58,11 +58,11 @@ const Testimonial = () => {
                                     />
                                     <div className="avatar">
                                         <div className="w-24 mt-5 rounded-full">
-                                            <img src={testimonial?.image} />
+                                            <img src={testimonial?.photo} />
                                         </div>
                                     </div>
-                                    <p className="py-8 text-center">{testimonial?.review}</p>
-                                    <h3 className="text-2xl text-orange-400 uppercase">{testimonial?.name}</h3>
+                                    <p className="py-8 px-5 text-center">{testimonial?.description}</p>
+                                    <h3 className="text-xl text-orange-400 uppercase">{testimonial?.name}</h3>
                                 </div>
                             </SwiperSlide>
                         )

@@ -1,11 +1,10 @@
-import { FaCartPlus, FaFileAlt, FaHome, FaRegThumbsUp, FaShoppingBag, FaUsers, FaUtensils, FaWallet } from 'react-icons/fa';
+import { FaFileAlt, FaHome, FaShoppingBag, FaUser, FaUsers, FaUtensils, FaWallet } from 'react-icons/fa';
+import { MdDashboard } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 import { useAdmin } from "../Hooks/useAdmin";
-import { useCart } from "../Hooks/usecart";
 import Navbar from '../Shared/Navbar';
 const DashBoard = () => {
     const [isAdmin] = useAdmin()
-    const [cart] = useCart()
     return (
         <>
             <div className="drawer lg:drawer-open">
@@ -29,11 +28,25 @@ const DashBoard = () => {
                                     <div className="divider"></div>
                                 </> :
                                 <>
-                                    <li className="text-lg"><NavLink to="/dashboard/userHome"><FaHome></FaHome>User Home</NavLink></li>
-                                    <li className="text-lg"><NavLink to="/dashboard/userCart"><FaCartPlus></FaCartPlus>My Cart
-                                        <span className="badge inl badge-accent">+{cart?.length || 0}</span></NavLink></li>
+                                    <li className="text-lg">
+                                        <NavLink to="/dashboard/userDashboard">
+                                            <MdDashboard />
+                                            Dashboard
+                                        </NavLink>
+                                    </li>
+                                    <li className="text-lg">
+                                        <NavLink to="/dashboard/userProfile">
+                                            <FaHome></FaHome>
+                                            User Profile
+                                        </NavLink>
+                                    </li>
+                                    <li className="text-lg">
+                                        <NavLink to="/dashboard/updateProfile"><FaUser></FaUser>
+                                            Update Profile
+                                        </NavLink>
+                                    </li>
                                     <li className="text-lg"><NavLink to="/dashboard/paymentHistory"><FaWallet></FaWallet>Payment History</NavLink></li>
-                                    <li className="text-lg"><NavLink to="/dashboard/review"><FaRegThumbsUp></FaRegThumbsUp>Review</NavLink></li>
+
                                     <div className="divider"></div>
                                 </>
                         }

@@ -9,7 +9,8 @@ import AdminHome from "../Pages/DashBoard/AdminHome/AdminHome";
 import ManageItems from "../Pages/DashBoard/ManageItems/ManageItems";
 import History from "../Pages/DashBoard/Payment/PayemntHistory/History";
 import Payment from "../Pages/DashBoard/Payment/Payment";
-import Review from "../Pages/DashBoard/Review/Review";
+import UserDashboard from "../Pages/DashBoard/UerDashboard/UserDashboard";
+import UpdateProfile from "../Pages/DashBoard/UpdateProfile/UpdateProfile";
 import AllUsers from "../Pages/DashBoard/UserCart/AllUsers/AllUsers";
 import CartItem from "../Pages/DashBoard/UserCart/Cart/CartItem";
 import UserHome from "../Pages/DashBoard/UserHome/UserHome";
@@ -64,10 +65,6 @@ const router = createBrowserRouter([
         element: <Payment></Payment>
       },
       {
-        path: "review",
-        element: <Review></Review>
-      },
-      {
         path: "allUsers",
         element: <AllUsers></AllUsers>
       },
@@ -86,6 +83,18 @@ const router = createBrowserRouter([
       {
         path: "userHome",
         element: <UserHome></UserHome>
+      },
+      {
+        path: "userDashboard",
+        element: <UserDashboard></UserDashboard>
+      },
+      {
+        path: "userProfile",
+        element: <UserHome></UserHome>
+      },
+      {
+        path: "updateProfile",
+        element: <UpdateProfile></UpdateProfile>
       },
       {
         path: "adminHome",

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
@@ -60,10 +61,13 @@ const BestSeller = () => {
                                     </div>
 
                                     <div className="mt-auto mb-5 flex justify-center">
-                                        <button className="bg-transparent text-slate-500 border border-slate-700 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group">
-                                            <span className="bg-slate-700 shadow-slate-400 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
-                                            View details
-                                        </button>
+                                        <Link to={`/details/${item?._id}`} className="card-actions justify-center pt-2">
+                                            <button className="bg-transparent text-slate-500 border border-slate-700 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group">
+                                                <span className="bg-slate-700 shadow-slate-400 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
+                                                View details
+                                            </button>
+
+                                        </Link>
                                     </div>
 
                                 </div>

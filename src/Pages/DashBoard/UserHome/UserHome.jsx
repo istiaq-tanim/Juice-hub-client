@@ -1,34 +1,77 @@
 import { useContext } from "react";
-import { FaCartPlus, FaStar, FaUserClock, FaWallet } from "react-icons/fa";
-import useFetch from "../../../Hooks/useFetch";
+import { FaBriefcase, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { useGetUserQuery } from "../../../features/user/userApi";
 import { UserContext } from "../../../Provider/AuthProvider";
-
 const UserHome = () => {
     const { user } = useContext(UserContext)
+    const email = user?.email
+    const { data: profile, isLoading, isError } = useGetUserQuery(email);
+    if (isLoading) {
+        return <div>Loading...</div>
+    }
 
-    const fetchData = useFetch(`http://localhost:5000/userHome/?email=${user.email}`)
-    const { reviewCount, cartsCount, paymentCounts, shop } = fetchData
+    if (isError) {
+        return <span>There is an Error</span>
+    }
+
     return (
-        <div className="w-full px-10">
-            <h3 className="text-3xl text-center my-20 font-sans uppercase text-red-400">Hello {user.displayName}</h3>
-            <div className="flex">
-                <div className="flex flex-col bg-[#ecb6db] border-r-1 p-5 w-1/2 justify-center items-center">
-                    <img src={user.photoURL} className="w-48 rounded-full" alt="" />
-                    <h3 className="mt-5 text-3xl">{user.displayName}</h3>
-                </div>
-                <div className="divider lg:divider-horizontal"></div>
-                <div className="w-1/2 p-5  bg-[#FEF9C3]">
-                    <h3 className="text-2xl text-center font-bold font-serif">Your Activity</h3>
-                    <div className="flex justify-start flex-col mt-10">
-                        <ul className="w-3/4 mx-auto">
-                            <li><p className="flex  items-center gap-2 text-blue-500 font-semibold"><FaCartPlus></FaCartPlus>Shop:  ${shop}</p></li>
-                            <li><p className="flex  items-center text-green-500 font-semibold gap-2"><FaStar></FaStar>Reviews: {reviewCount}</p></li>
-                            <li><p className="flex  items-center text-orange-500 font-semibold gap-2"><FaWallet></FaWallet>Payment: {paymentCounts}</p></li>
-                            <li><p className="flex  items-center gap-2 text-indigo-400 font-semibold"><FaUserClock></FaUserClock>Pending Order: {cartsCount}</p></li>
-                        </ul>
+        <div className="w-full px-10 overflow-hidden">
+            <div className="p-16">
+                <div className="p-8 bg-white shadow mt-24">
+
+                    <div className="relative">
+                        <div className="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 -top-0 -mt-44 flex items-center justify-center text-indigo-500">
+                            <img className="rounded-full" src={profile?.photo} alt="" />
+                        </div>
+                    </div>
+
+
+                    <div className="text-center mt-5">
+                        <h3 className="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 ">
+                            {profile?.name}
+                        </h3>
+                        <div className="text-sm leading-normal flex justify-center items-center gap-2 mt-0 mb-2 text-blueGray-400 font-bold uppercase">
+
+                            {
+                                profile?.street || profile?.city || profile?.country &&
+                                <>
+                                    <FaMapMarkerAlt />
+                                    <p>{profile?.street}, {profile?.city} , {profile?.country}
+                                    </p>
+                                </>
+                            }
+                        </div>
+                        <div className="mb-2 text-blueGray-600 mt-5 flex justify-center items-center gap-2">
+
+                            {
+                                profile?.occupation && <>
+                                    <FaBriefcase />
+                                    <p>{profile?.occupation}</p>
+                                </>
+                            }
+                        </div>
+                        <div className="mb-2 text-blueGray-600 flex justify-center items-center gap-2">
+                            <MdEmail />
+                            <p>{profile?.email}</p>
+                        </div>
+                        <div className="mb-2 text-blueGray-600 flex justify-center items-center gap-2">
+                            {
+                                profile?.phone && <>
+                                    <FaPhoneAlt />
+                                    <p>{profile?.phone}</p>
+                                </>
+                            }
+                        </div>
+                    </div>
+                    <div className="mt-5 flex flex-col justify-center">
+                        <p className="text-gray-600 text-center font-light lg:px-16">
+                            {profile?.about}
+                        </p>
                     </div>
                 </div>
             </div>
+
         </div>
     );
 };

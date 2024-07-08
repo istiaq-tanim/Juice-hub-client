@@ -1,14 +1,14 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import { UserContext } from "../Provider/AuthProvider";
 import SocialLogin from "./SocialLogin";
-import Swal from "sweetalert2";
 const Login = () => {
-    const { register, handleSubmit, formState: { errors } ,reset} = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const { signIn } = useContext(UserContext)
-    const navigate=useNavigate()
-    const location=useLocation()
+    const navigate = useNavigate()
+    const location = useLocation()
     let from = location.state?.from?.pathname || "/";
     const onSubmit = data => {
         signIn(data.email, data.password)
@@ -25,7 +25,8 @@ const Login = () => {
                 })
                 navigate(from, { replace: true });
             })
-            .catch(error => console.log(error.message))}
+            .catch(error => console.log(error.message))
+    }
     return (
 
         <div className="hero bg-base-200">
@@ -37,14 +38,14 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" name='email' {...register("email", { required: true })} placeholder="email" className="input input-bordered" />
+                            <input type="email" name='email' defaultValue={"istiaq.tanim@gmail.com"} {...register("email", { required: true })} placeholder="email" className="input input-bordered" />
                             {errors.email && <span className="text-red-500">Email is required</span>}
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name='password' {...register("password", { required: true })} placeholder="password" className="input input-bordered" />
+                            <input type="password" defaultValue={123456} name='password' {...register("password", { required: true })} placeholder="password" className="input input-bordered" />
                             {errors.password && <span className="text-red-500">Password is required</span>}
                         </div>
                         <div className="form-control mt-2">

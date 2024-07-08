@@ -8,11 +8,16 @@ import { Link, NavLink } from 'react-router-dom';
 import { useAdmin } from '../Hooks/useAdmin';
 import { UserContext } from '../Provider/AuthProvider';
 import { useGetCartQuery } from '../features/cart/cartApi';
+import { useGetUserQuery } from '../features/user/userApi';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { user, logOut } = useContext(UserContext)
   const { data: cartItems } = useGetCartQuery(user?.email)
+
+  const email = user?.email
+
+  const { data: profile } = useGetUserQuery(email);
 
 
   const [isAdmin] = useAdmin()
@@ -22,7 +27,7 @@ const Header = () => {
       .catch(error => console.log(error.message))
   }
   return (
-    <div className='bg-zinc-800 opacity-80 fixed px-4 z-10 py-5 rounded-lg w-[100%]'>
+    <div className='bg-zinc-800 opacity-80 fixed px-12 z-10 py-3 rounded-lg w-[100%]'>
       <div className='relative flex items-center justify-between text-white'>
         {/* Logo Section */}
         <Link to='/' className='inline-flex items-center'>
@@ -55,7 +60,7 @@ const Header = () => {
               to='/order'
               className={({ isActive }) => (isActive ? "text-red-400" : '')}
             >
-              Order
+              Products
             </NavLink>
           </li>
           <li>
@@ -88,9 +93,9 @@ const Header = () => {
           </li>
           {user ?
             <>
-              <label tabIndex={0} className="btn btn-ghost btn-circle avatar tooltip-success tooltip" data-tip={user.displayName}>
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar tooltip-success tooltip" data-tip={profile?.name}>
                 <div className="w-10 rounded-full" >
-                  <img src={user.photoURL} />
+                  <img src={profile?.photo} />
                 </div>
               </label>
 

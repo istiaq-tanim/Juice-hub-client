@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import Modal from 'react-modal';
 import { useAddReviewMutation } from '../../features/proudcts/productsApi';
+import { useGetUserQuery } from '../../features/user/userApi';
 import { UserContext } from '../../Provider/AuthProvider';
 import "../DashBoard/ManageItems/Modal.css";
 import ReviewCard from './ReviewCard';
@@ -20,7 +21,11 @@ const Review = ({ product }) => {
       const [isModalOpen, setIsModalOpen] = useState(false);
       const { register, handleSubmit, reset } = useForm();
       const [addReview, { isSuccess }] = useAddReviewMutation()
+
       const { user } = useContext(UserContext)
+      const email = user?.email
+
+      const { data: profile } = useGetUserQuery(email);
       const [rating, setRating] = useState(0);
       const productId = product?._id
       const onSubmit = data => {
@@ -30,7 +35,8 @@ const Review = ({ product }) => {
                   email,
                   title,
                   description,
-                  rating
+                  rating,
+                  photo: profile?.photo
             }
             addReview({ productId, review })
 
@@ -41,6 +47,7 @@ const Review = ({ product }) => {
 
       const closeModal = () => {
             setIsModalOpen(false);
+            reset()
       };
 
       useEffect(() => {
@@ -93,7 +100,7 @@ const Review = ({ product }) => {
                                                                               </svg>
                                                                               </label>
                                                                               <input type="text" id="default-search"
-                                                                                    defaultValue={user && user.displayName}
+                                                                                    defaultValue={profile?.name && profile?.name}
                                                                                     {...register("name", { required: true })}
                                                                                     className="block w-full h-11 px-5 py-2.5 bg-white leading-7 text-base font-normal shadow-xs text-gray-900 bg-transparent border border-gray-300 rounded-full placeholder-gray-400 focus:outline-none " placeholder="" required="" />
                                                                         </div>
@@ -151,7 +158,11 @@ const Review = ({ product }) => {
 
 
                                     {
-                                          product?.reviews?.map(item => <ReviewCard key={item} item={item}></ReviewCard>)
+                                          product?.reviews?.length > 0 ?
+                                                product?.reviews?.map(item => <ReviewCard key={item} item={item}></ReviewCard>) : <div className='text-lg'>
+                                                      There is No Review, please give your valuable feedback!
+                                                </div>
+
                                     }
 
                               </div>

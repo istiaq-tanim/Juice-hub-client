@@ -10,7 +10,6 @@ const SignUp = () => {
     const { createUser, updateUserProfile } = useContext(UserContext)
     const navigate = useNavigate()
     const onSubmit = data => {
-        console.log(data)
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
@@ -35,7 +34,7 @@ const SignUp = () => {
                                         showConfirmButton: false,
                                         timer: 1000
                                     })
-                                    navigate("/")
+                                    navigate("/login")
                                 }
                             })
 
