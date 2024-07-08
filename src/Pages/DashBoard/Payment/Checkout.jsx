@@ -17,7 +17,7 @@ const Checkout = ({ price, cart }) => {
     useEffect(() => {
 
         if (price > 0) {
-            fetch("http://localhost:5000/create-payment-intent", {
+            fetch("https://juice-hub-server.vercel.app/create-payment-intent", {
                 method: "POST",
                 headers: { "content-type": "application/json" },
                 body: JSON.stringify({ price })
@@ -86,7 +86,7 @@ const Checkout = ({ price, cart }) => {
                 cartItems: cart.map(item => item._id),
             }
 
-            fetch("http://localhost:5000/payment",
+            fetch("https://juice-hub-server.vercel.app/payment",
                 {
                     method: "POST",
                     headers: { "content-type": "application/json" },

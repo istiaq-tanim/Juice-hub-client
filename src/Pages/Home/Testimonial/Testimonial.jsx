@@ -19,7 +19,7 @@ const myStyles = {
 const Testimonial = () => {
     const [testimonials, setTestimonials] = useState([])
     useEffect(() => {
-        fetch("http://localhost:5000/review")
+        fetch("https://juice-hub-server.vercel.app/review")
             .then(res => res.json())
             .then(data => {
                 setTestimonials(data)

@@ -3,7 +3,7 @@ const useJuice = () => {
   const { data: juice = [], refetch } = useQuery({
     queryKey: ["juiceItems"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/juiceItems")
+      const res = await fetch("https://juice-hub-server.vercel.app/juiceItems")
       return res.json()
     }
   })

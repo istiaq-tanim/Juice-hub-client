@@ -17,7 +17,7 @@ const AddItems = () => {
                     const savedImg = imgRes.data.display_url
                     const { name, price, category, description, available, ratings } = data
                     const addItem = { name, price: parseFloat(price), ratings: parseFloat(ratings), category, description, available: parseFloat(available), image: savedImg, sellNumber: 0 }
-                    fetch("http://localhost:5000/juiceItems", {
+                    fetch("https://juice-hub-server.vercel.app/juiceItems", {
                         method: "POST",
                         headers: { "content-type": "application/json" },
                         body: JSON.stringify(addItem)

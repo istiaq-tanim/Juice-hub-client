@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const reviewApi = createApi({
       reducerPath: 'reviewApi',
-      baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000' }),
+      baseQuery: fetchBaseQuery({ baseUrl: 'https://juice-hub-server.vercel.app' }),
       tagTypes: ["Product"],
       endpoints: (builder) => ({
             addReview: builder.mutation({

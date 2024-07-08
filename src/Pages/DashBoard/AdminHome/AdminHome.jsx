@@ -9,13 +9,13 @@ const AdminHome = () => {
     const [chartData, setChartData] = useState([])
     const { user } = useContext(UserContext)
     useEffect(() => {
-        fetch("http://localhost:5000/adminHome")
+        fetch("https://juice-hub-server.vercel.app/adminHome")
             .then(res => res.json())
             .then(data => setStat(data))
     }, [])
 
     useEffect(() => {
-        fetch("http://localhost:5000/orderStats")
+        fetch("https://juice-hub-server.vercel.app/orderStats")
             .then(res => res.json())
             .then(data => setChartData(data))
     }, [])

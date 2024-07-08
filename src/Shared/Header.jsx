@@ -27,7 +27,7 @@ const Header = () => {
       .catch(error => console.log(error.message))
   }
   return (
-    <div className='bg-zinc-800 opacity-80 fixed px-12 z-10 py-3 rounded-lg w-[100%]'>
+    <div className='bg-zinc-800 opacity-80 fixed px-12 z-10 py-5 rounded-lg w-[100%]'>
       <div className='relative flex items-center justify-between text-white'>
         {/* Logo Section */}
         <Link to='/' className='inline-flex items-center'>

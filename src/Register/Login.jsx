@@ -31,8 +31,12 @@ const Login = () => {
 
         <div className="hero bg-base-200">
             <div className="hero-content flex w-full gap-20">
-                <div className="card flex-shrink-0 w-full h-auto max-w-sm shadow-2xl bg-base-100 my-32">
+                <div className="card flex-shrink-0 w-full h-auto max-w-sm shadow-2xl bg-base-100 mt-24 mb-32">
                     <h1 className="text-3xl text-center font-bold mt-3">Login now!</h1>
+                    <div className="flex flex-col justify-center items-center mt-3 text-slate-500">
+                        <p >Admin Email: tawhid@gmail.com</p>
+                        <p >Admin Password: 123456</p>
+                    </div>
                     <form onSubmit={handleSubmit(onSubmit)} className="card-body pb-2">
                         <div className="form-control">
                             <label className="label">

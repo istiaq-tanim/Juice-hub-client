@@ -15,7 +15,7 @@ const DashboardStats = () => {
       useEffect(() => {
             const fetchTransactions = async () => {
                   try {
-                        const response = await fetch(`http://localhost:5000/payments/last-year?email=${user?.email}`);
+                        const response = await fetch(`https://juice-hub-server.vercel.app/payments/last-year?email=${user?.email}`);
                         const data = await response.json();
 
                         const monthNames = {

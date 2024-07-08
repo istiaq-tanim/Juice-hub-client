@@ -7,10 +7,10 @@ const OrderCard = ({ item }) => {
     const { name, description, price, image, ratings, _id, available } = item
     return (
         <div className="card card-compact bg-white shadow-2xl mt-3 mb-10" style={{ height: "500px" }}>
-            <figure><img src={image} className="h-60 w-full object-fill" alt="Fruits" /></figure>
+            <figure><img src={image} className="h-64 w-full object-fill" alt="Fruits" /></figure>
             <div className="card-body">
                 <h2 className="card-title text-red-700">{name}</h2>
-                <p>Description: {description}</p>
+                <p>Description: {description.slice(0, 220)}</p>
                 <p>Price: ${price}</p>
                 <p>Available: {available}</p>
                 <div className='flex text-lg gap-2'>Ratings:<Rating

@@ -6,7 +6,7 @@ const AllUsers = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ["users"],
         queryFn: async () => {
-            const response = await fetch("http://localhost:5000/users")
+            const response = await fetch("https://juice-hub-server.vercel.app/users")
             return response.json()
         }
     })

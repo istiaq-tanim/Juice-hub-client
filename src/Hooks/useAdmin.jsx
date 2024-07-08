@@ -8,7 +8,7 @@ export const useAdmin = () => {
   const { data: isAdmin } = useQuery({
     queryKey: ["isAdmin", user?.email],
     queryFn: async () => {
-      const response = await fetch(`http://localhost:5000/users/admin/${user?.email}`)
+      const response = await fetch(`https://juice-hub-server.vercel.app/users/admin/${user?.email}`)
       return response.json()
     }
   })

@@ -14,7 +14,7 @@ const SocialLogin = () => {
                 const user = result.user
                 console.log(user)
                 const savedUser = { email: user.email, name: user.displayName, photo: user.photoURL, role: 'user' }
-                fetch("http://localhost:5000/users", {
+                fetch("https://juice-hub-server.vercel.app/users", {
                     method: "POST",
                     headers: { "content-type": "application/json" },
                     body: JSON.stringify(savedUser)

@@ -5,7 +5,7 @@ const AllUserRow = ({ user, index, refetch }) => {
     const { name, email, _id, role } = user
 
     const handleAdminRole = (id, name) => {
-        fetch(`http://localhost:5000/users/admin/${id}`, {
+        fetch(`https://juice-hub-server.vercel.app/users/admin/${id}`, {
             method: "PATCH",
         })
             .then(res => res.json())
@@ -33,7 +33,7 @@ const AllUserRow = ({ user, index, refetch }) => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/users/${id}`, {
+                fetch(`https://juice-hub-server.vercel.app/users/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

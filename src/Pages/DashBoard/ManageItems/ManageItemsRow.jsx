@@ -22,7 +22,7 @@ const ManageItemsRow = ({ index, item, refetch }) => {
             available: parseInt(available),
             category
         }
-        fetch("http://localhost:5000/juiceItems", {
+        fetch("https://juice-hub-server.vercel.app/juiceItems", {
             method: "PUT",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(editItem)
@@ -61,7 +61,7 @@ const ManageItemsRow = ({ index, item, refetch }) => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/juiceItems/${id}`, {
+                fetch(`https://juice-hub-server.vercel.app/juiceItems/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

@@ -6,7 +6,7 @@ const History = () => {
     const { user } = useContext(UserContext)
     const [history, setHistory] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/payment/?email=${user?.email}`)
+        fetch(`https://juice-hub-server.vercel.app/payment/?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setHistory(data))
     }, [user.email])

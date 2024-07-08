@@ -11,7 +11,7 @@ const BestSeller = () => {
     const [popular, setPopular] = useState([])
     useEffect(() => {
 
-        fetch("http://localhost:5000/popular")
+        fetch("https://juice-hub-server.vercel.app/popular")
             .then(res => res.json())
             .then(data => {
                 setPopular(data)

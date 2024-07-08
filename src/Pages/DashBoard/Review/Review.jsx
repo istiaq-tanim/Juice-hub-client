@@ -25,7 +25,7 @@ const Review = () => {
             name: user.displayName,
             email: user.email
         }
-        fetch("http://localhost:5000/review", {
+        fetch("https://juice-hub-server.vercel.app/review", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(reviewData)

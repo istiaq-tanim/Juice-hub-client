@@ -17,7 +17,7 @@ const SignUp = () => {
                 updateUserProfile(data.name, data.photo)
                     .then(() => {
                         const savedUser = { email: data.email, name: data.name, photo: data.photo, role: "user" }
-                        fetch("http://localhost:5000/users", {
+                        fetch("https://juice-hub-server.vercel.app/users", {
                             method: "POST",
                             headers: { "content-type": "application/json" },
                             body: JSON.stringify(savedUser)
